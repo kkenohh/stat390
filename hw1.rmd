@@ -1,0 +1,21 @@
+---
+title: "hw1"
+author: "Ken"
+date: "2023-10-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+iris <- read.csv("iris.csv")
+histogram <- hist(iris$Petal.Length,
+                  breaks=seq(0,8,l=17),
+                  main="Petal Lengths",
+                  xlab="Petal Lengths",
+                  ylab="Density")
+```
+
+The shape
