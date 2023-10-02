@@ -44,10 +44,11 @@ virginica_hist <- hist(virginicas$Petal.Length,
                   main="Petal Lengths of Virginicas",
                   xlab="Petal Lengths (in cm)",
                   ylab="Frequency")
-
 ```
 
 The most striking difference between the three is that each are in a different segment of the histogram. For example, the setosa petal lengths are on the lower end, versicolor petal lengths are in the middle, and virginica petal lengths are on the higher end.
+
+Based on the histogram, the setosas have the least variability in petal length because most of the petal lengths are in the same bin, so the mean is most likely in that area and aren't far from it.
 
 ```{r questionTwoBiii}
 setosa_var <- var(setosas$Petal.Length)
