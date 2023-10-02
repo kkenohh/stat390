@@ -10,7 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library("dplyr")
 ```
 
-```{r questionTwo}
+# Question Two: A
+```{r questionTwoA}
 iris <- read.csv("iris.csv")
 histogram <- hist(iris$Petal.Length,
                   breaks=seq(0,8,l=17),
@@ -21,19 +22,28 @@ histogram <- hist(iris$Petal.Length,
 
 The shape of the histogram is bimodal. The percentage of iris flowers with a petal length less than or equal to 2cm is .3267. 
 
-```{r questionThree}
+# Question Two: B
+```{r questionTwoB}
 setosas <- iris %>% filter(iris$Species == "setosa")
-print(setosas)
-
 setosa_hist <- hist(setosas$Petal.Length,
                   breaks=seq(0,8,l=17),
-                  main="Petal Lengths of Setosas, Virginicas, and Versicolors",
+                  main="Petal Lengths of Setosas",
                   xlab="Petal Lengths (in cm)",
                   ylab="Frequency")
 
-virginica <- iris %>% filter(iris$Species == "virginica")
+virginicas <- iris %>% filter(iris$Species == "virginica")
+virginica_hist <- hist(virginicas$Petal.Length,
+                  breaks=seq(0,8,l=17),
+                  main="Petal Lengths of Virginicas",
+                  xlab="Petal Lengths (in cm)",
+                  ylab="Frequency")
 
-versicolor <- iris %>% filter(iris$Species == "versicolor")
+versicolors <- iris %>% filter(iris$Species == "versicolor")
+versicolor_hist <- hist(versicolors$Petal.Length,
+                  breaks=seq(0,8,l=17),
+                  main="Petal Lengths of Versicolors",
+                  xlab="Petal Lengths (in cm)",
+                  ylab="Frequency")
 
 ```
 
