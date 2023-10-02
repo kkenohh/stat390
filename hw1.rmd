@@ -23,18 +23,11 @@ histogram <- hist(iris$Petal.Length,
 The shape of the histogram is bimodal. The percentage of iris flowers with a petal length less than or equal to 2cm is .3267. 
 
 # Question Two: B
-```{r questionTwoB}
+```{r questionTwoBi}
 setosas <- iris %>% filter(iris$Species == "setosa")
 setosa_hist <- hist(setosas$Petal.Length,
                   breaks=seq(0,8,l=17),
                   main="Petal Lengths of Setosas",
-                  xlab="Petal Lengths (in cm)",
-                  ylab="Frequency")
-
-virginicas <- iris %>% filter(iris$Species == "virginica")
-virginica_hist <- hist(virginicas$Petal.Length,
-                  breaks=seq(0,8,l=17),
-                  main="Petal Lengths of Virginicas",
                   xlab="Petal Lengths (in cm)",
                   ylab="Frequency")
 
@@ -45,5 +38,24 @@ versicolor_hist <- hist(versicolors$Petal.Length,
                   xlab="Petal Lengths (in cm)",
                   ylab="Frequency")
 
+virginicas <- iris %>% filter(iris$Species == "virginica")
+virginica_hist <- hist(virginicas$Petal.Length,
+                  breaks=seq(0,8,l=17),
+                  main="Petal Lengths of Virginicas",
+                  xlab="Petal Lengths (in cm)",
+                  ylab="Frequency")
+
 ```
 
+The most striking difference between the three is that each are in a different segment of the histogram. For example, the setosa petal lengths are on the lower end, versicolor petal lengths are in the middle, and virginica petal lengths are on the higher end.
+
+```{r questionTwoBiii}
+setosa_var <- var(setosas$Petal.Length)
+print(setosa_var)
+
+versicolor_var <- var(versicolors$Petal.Length)
+print(versicolor_var)
+
+virginica_var <- var(virginicas$Petal.Length)
+print(virginica_var)
+```
