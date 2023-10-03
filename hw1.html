@@ -359,7 +359,7 @@ display: none;
 
 <div id="question-two" class="section level1">
 <h1>Question Two</h1>
-<pre class="r"><code>iris &lt;- read.csv(&quot;iris.csv&quot;)
+<pre class="r"><code>iris &lt;- read.csv(&quot;iris.csv&quot;, header=TRUE)
 histogram &lt;- hist(iris$Petal.Length,
                   breaks=seq(0,8,l=17),
                   main=&quot;Petal Lengths of Setosas, Virginicas, and Versicolors&quot;,

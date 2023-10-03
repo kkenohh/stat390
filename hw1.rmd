@@ -12,7 +12,7 @@ library("dplyr")
 
 # Question Two
 ```{r questionTwoA}
-iris <- read.csv("iris.csv")
+iris <- read.csv("iris.csv", header=TRUE)
 histogram <- hist(iris$Petal.Length,
                   breaks=seq(0,8,l=17),
                   main="Petal Lengths of Setosas, Virginicas, and Versicolors",
