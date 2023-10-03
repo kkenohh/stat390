@@ -1,5 +1,5 @@
 ---
-title: "hw1"
+title: "STAT390: Homework 1"
 author: "Ken"
 date: "2023-10-01"
 output: html_document
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library("dplyr")
 ```
 
-# Question Two: A
+# Question Two
 ```{r questionTwoA}
 iris <- read.csv("iris.csv")
 histogram <- hist(iris$Petal.Length,
@@ -22,7 +22,6 @@ histogram <- hist(iris$Petal.Length,
 
 The shape of the histogram is bimodal. The percentage of iris flowers with a petal length less than or equal to 2cm is .3267. 
 
-# Question Two: B
 ```{r questionTwoBi}
 setosas <- iris %>% filter(iris$Species == "setosa")
 setosa_hist <- hist(setosas$Petal.Length,
@@ -48,15 +47,40 @@ virginica_hist <- hist(virginicas$Petal.Length,
 
 The most striking difference between the three is that each are in a different segment of the histogram. For example, the setosa petal lengths are on the lower end, versicolor petal lengths are in the middle, and virginica petal lengths are on the higher end.
 
-Based on the histogram, the setosas have the least variability in petal length because most of the petal lengths are in the same bin, so the mean is most likely in that area and aren't far from it.
+Based on the histogram, the setosas have the least variability in petal length because the setosas are not as widely spread out across multiple bins like versicolors and viriginicas are. As shown below, the setosas do indeed have the least variability.
 
 ```{r questionTwoBiii}
-setosa_var <- var(setosas$Petal.Length)
-print(setosa_var)
+sd(setosas$Petal.Length)
+sd(versicolors$Petal.Length)
+sd(virginicas$Petal.Length)
+```
 
-versicolor_var <- var(versicolors$Petal.Length)
-print(versicolor_var)
+# Question 3
 
-virginica_var <- var(virginicas$Petal.Length)
-print(virginica_var)
+```{r questionThree}
+apple <- read.csv("APPL.csv", header=TRUE)
+ibm <- read.csv("IBM.csv", header=TRUE)
+jnj <- read.csv("JNJ.csv", header=TRUE)
+sp500 <- read.csv("SP500.csv", header=TRUE)
+
+dates <- apple[,1]
+dates <- strptime(dates, "%Y-%m-%d")
+dates <- rev(dates)
+
+pApple <- apple[,7]
+pApple <- rev(pApple)
+pIBM <- ibm[,7]
+pIBM <- rev(pIBM)
+pJNJ <- jnj[,7]
+pJNJ <- rev(pJNJ)
+pSP500 <- sp500[,7]
+pSP500 <- rev(pSP500)
+
+plot(dates, 8*pApple, ylim = c(500, 2500), col="blue", type="l", xlab = "Year", ylab = "Adj. Closing Price")
+lines(dates, 8*pIBM, col="red")
+lines(dates, 8*pJNJ, col="green")
+lines(dates, pSP500, col="black")
+
+title("Prices of 8*Apple, 8*IBM, 8*JNJ, and SP500")
+legend(x="topright", legend=c("8*Apple", "8*IBM", "8*JNJ", "SP500"), lty=c(1, 1), col = c("blue", "red", "green", "black"), lwd = 1)
 ```
