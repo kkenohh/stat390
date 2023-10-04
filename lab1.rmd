@@ -7,7 +7,6 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-setwd("C:/Users/jetz1/school/stat390")
 library("dplyr")
 library("Hmisc")
 ```
@@ -18,7 +17,7 @@ View(titanic)
 age <- titanic$age
 summary(age)
 describe(titanic)
-count <- table(titanic$sex, titanic$pclass)
+counts <- table(titanic$sex, titanic$pclass)
 survived <- table(titanic$sex[titanic$survived == 1], titanic$pclass[titanic$survived == 1])
 survived
 ```
