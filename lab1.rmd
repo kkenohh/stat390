@@ -1,0 +1,39 @@
+---
+title: "STAT390: Lab 1"
+author: "Ken"
+date: "2023-10-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("C:/Users/jetz1/school/stat390")
+library("dplyr")
+library("Hmisc")
+```
+
+```{r}
+titanic <- read.csv("titanic.csv", header = TRUE)
+View(titanic)
+age <- titanic$age
+summary(age)
+describe(titanic)
+count <- table(titanic$sex, titanic$pclass)
+survived <- table(titanic$sex[titanic$survived == 1], titanic$pclass[titanic$survived == 1])
+survived
+```
+
+header = T, tells R to ignore the first row in the CSV because those are the column names. The options for header is TRUE or FALSE.
+
+The data set contains 8 variables: pclass, survived, sex, age, sibsp, parch, fare, embarked.
+
+Age statistics:
+Minimum: 0.1667
+Maximum: 80
+Mean: 29.81
+1st Quartile: 21
+3rd Quartile: 39
+
+There were 282 people in 1st class, 261 in 2nd, and 500 in 3rd. 425 passengers survived. There were 386 female and 657 male passengers. 10% of the passengers were 50 years and older.
+
+The breaks splits up the data into meaningful groups.
