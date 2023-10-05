@@ -20,7 +20,7 @@ histogram <- hist(iris$Petal.Length,
                   ylab="Frequency")
 ```
 
-The shape of the histogram is bimodal. The percentage of iris flowers with a petal length less than or equal to 2cm is .3267. 
+The shape of the histogram is bimodal. The percentage of iris flowers with a petal length less than or equal to 2cm is .3267 or 32.67%. 
 
 ```{r questionTwoBi}
 setosas <- iris %>% filter(iris$Species == "setosa")
@@ -84,3 +84,18 @@ lines(dates, pSP500, col="black")
 title("Prices of 8*Apple, 8*IBM, 8*JNJ, and SP500")
 legend(x="topright", legend=c("8*Apple", "8*IBM", "8*JNJ", "SP500"), lty=c(1, 1), col = c("blue", "red", "green", "black"), lwd = 1)
 ```
+
+# Question 5
+The first statement is more probable because it is less specific. Both have the death of 25 people, however, the second statement only occurs in LaGrange, Georgia, which is a much smaller area than North America.
+
+# Question 6
+### a.
+Sample space of flipping a coin three times: {HHH, HHT, HTT, HTH, THH, THT, TTT, TTH}
+
+### b.
+i. A = {HTT, TTH, THT}
+ii. B = {TTT, TTH, HTT, THT}
+iii. C = {HTT, HTH, HHT, HHH}
+
+### c.
+P(A) = 3/8, P(B) = 1/2, P(C) = 1/2
