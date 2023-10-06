@@ -1,8 +1,10 @@
 ---
-title: "STAT390: Homework 1"
+title: 'STAT390: Homework 1'
 author: "Ken"
 date: "2023-10-01"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 library("dplyr")
 ```
 
-# Question Two
+![Homework 1 Page 1](img/homework1-1.jpg)
+![Homework 1 Page 2](img/homework1-2.jpg)
+![Homework 1 Page 3](img/homework1-3.jpg)
+
+# Question 2
 ```{r questionTwoA}
 iris <- read.csv("iris.csv", header=TRUE)
 histogram <- hist(iris$Petal.Length,
@@ -50,9 +56,9 @@ The most striking difference between the three is that each are in a different s
 Based on the histogram, the setosas have the least variability in petal length because the setosas are not as widely spread out across multiple bins like versicolors and viriginicas are. As shown below, the setosas do indeed have the least variability.
 
 ```{r questionTwoBiii}
-sd(setosas$Petal.Length)
-sd(versicolors$Petal.Length)
-sd(virginicas$Petal.Length)
+var(setosas$Petal.Length)
+var(versicolors$Petal.Length)
+var(virginicas$Petal.Length)
 ```
 
 # Question 3
@@ -82,7 +88,7 @@ lines(dates, 8*pJNJ, col="green")
 lines(dates, pSP500, col="black")
 
 title("Prices of 8*Apple, 8*IBM, 8*JNJ, and SP500")
-legend(x="topright", legend=c("8*Apple", "8*IBM", "8*JNJ", "SP500"), lty=c(1, 1), col = c("blue", "red", "green", "black"), lwd = 1)
+legend(x="topleft", legend=c("8*Apple", "8*IBM", "8*JNJ", "SP500"), lty=c(1, 1), col = c("blue", "red", "green", "black"), lwd = 1)
 
 logApple <- diff(log(pApple))*100
 logIBM <- diff(log(pIBM))*100
@@ -112,7 +118,7 @@ sd(logSP500)
 Ranked from highest risk to lowest: Apple, IBM, SP500, JNJ.
 
 # Question 5
-The first statement is more probable because it is less specific. Both have the death of 25 people, however, the second statement only occurs in LaGrange, Georgia, which is a much smaller area than North America.
+The first statement is more probable because the second statement is a subset of the first, which means P(second statement) <= P(first statement). Also, from a non-statistics standpoint, LaGrange, Georgia is a lot smaller and more specific than North America. Georgia is not even a tornado hotspot compared to other places in North America, like Kansas, Oklahoma, etc.
 
 # Question 6
 ### a.
@@ -125,5 +131,3 @@ iii. C = {HTT, HTH, HHT, HHH}
 
 ### c.
 P(A) = 3/8, P(B) = 1/2, P(C) = 1/2
-
-# Question 7
