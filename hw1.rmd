@@ -56,9 +56,9 @@ The most striking difference between the three is that each are in a different s
 Based on the histogram, the setosas have the least variability in petal length because the setosas are not as widely spread out across multiple bins like versicolors and viriginicas are. As shown below, the setosas do indeed have the least variability.
 
 ```{r questionTwoBiii}
-var(setosas$Petal.Length)
-var(versicolors$Petal.Length)
-var(virginicas$Petal.Length)
+sd(setosas$Petal.Length)
+sd(versicolors$Petal.Length)
+sd(virginicas$Petal.Length)
 ```
 
 # Question 3
