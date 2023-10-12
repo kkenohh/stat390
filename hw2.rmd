@@ -1,0 +1,23 @@
+---
+title: 'STAT390: Homework 2'
+author: "Ken"
+date: "2023-10-11"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("dplyr")
+sp500 <- read.csv("SP500.csv")
+```
+
+# Question 7
+```{r questionSeven}
+pSP500 <- sp500[,7]
+pSP500 <- rev(pSP500)
+rSP500 <- diff(log(pSP500))*100
+ndays <- length(rSP500)
+sum(rSP500 < 0)/ndays
+```
