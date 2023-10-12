@@ -14,10 +14,22 @@ sp500 <- read.csv("SP500.csv")
 ```
 
 # Question 7
-```{r questionSeven}
+```{r}
 pSP500 <- sp500[,7]
 pSP500 <- rev(pSP500)
 rSP500 <- diff(log(pSP500))*100
 ndays <- length(rSP500)
 sum(rSP500 < 0)/ndays
+
+
 ```
+is the probability that the log-returns on negative.
+
+
+```{r}
+numCons <- sum(rSP500[1:(ndays-1)]<0 & rSP500[2:ndays]<0)
+numPrev <- sum(rSP500[1:(ndays-1)]<0)
+probDown <- numCons/numPrev
+print(probDown)
+```
+is the probability that it will be down two consecutive days. I would say they are because the probability isn't very high to make us believe that having a down day leads the next day to be down as well.
