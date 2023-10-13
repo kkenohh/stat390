@@ -12,6 +12,12 @@ knitr::opts_chunk$set(echo = TRUE)
 sp500 <- read.csv("SP500.csv")
 ```
 
+![Homework 2 Page 1](img/homework2-4.jpg)
+![Homework 2 Page 2](img/homework2-5.jpg)
+![Homework 2 Page 3](img/homework2-6.jpg)
+![Homework 2 Page 4](img/homework2-7.jpg)
+![Homework 2 Page 5](img/homework2-8.jpg)
+
 # Question 7
 ```{r}
 pSP500 <- sp500[,7]
@@ -20,7 +26,7 @@ rSP500 <- diff(log(pSP500))*100
 ndays <- length(rSP500)
 sum(rSP500 < 0)/ndays
 ```
-is the probability that the log-returns on negative.
+is the probability that the log-returns are negative.
 
 ```{r}
 numCons <- sum(rSP500[1:(ndays-1)]<0 & rSP500[2:ndays]<0)
@@ -35,7 +41,10 @@ c/ndays
 ```
 is the probability that the absolute value of the log-returns is at least 1.5%.
 
+Looking for P("following day log-return abs value >= 1.5%" | "abs val log-return of selected day >= 1%").
 ```{r}
-
+oneP <- sum(rSP500[1:ndays] >= 1)
+following <- sum(rSP500[2:ndays] >= 1.5 & rSP500[1:ndays-1] >= 1)
+following/oneP
 ```
-looking for P("following day log-return abs value >= 1.5%" | "abs val log-return of selected day >= 1%")
+is the probability that the following day has an absolute value log-return of at least 1.5% given that the current day is at least 1%.
