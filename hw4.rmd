@@ -1,0 +1,44 @@
+---
+title: 'STAT390: Homework 2'
+author: "Ken"
+date: "2023-10-11"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+apple <- read.csv("APPL.csv")
+jnj <- read.csv("JNJ.csv")
+```
+
+# Question 1
+a). Geometric Distribution. It has one parameter, *p*, which is the probability of winning at least one of the lotteries. The value we pass in as *p* would be P("win one") = 1 - P("win neither") = (1 - (1 - *p1*)(1 - *p2*))
+
+b). The expected number of times you would need to play for a win would be 1/(1 - (1 - *p1*)(1 - *p2*)).
+
+# Question 5
+a).
+```{r}
+pnorm(65, mean = 50, sd = 10) - pnorm(45, mean = 50, sd = 10)
+```
+
+b).
+```{r}
+top3 <- qnorm(.97, mean = 0, sd = 1)
+top3 * 10 + 50
+```
+
+c).
+```{r}
+
+```
+
+# Question 6
+```{r}
+pApple <- rev(apple[,7])
+rApple <- diff(log(pApple))*100
+pjnj <- rev(jnj[,7])
+rjnj <- diff(log(pjnj))*100
+```
