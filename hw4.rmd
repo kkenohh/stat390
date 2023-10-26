@@ -41,4 +41,18 @@ pApple <- rev(apple[,7])
 rApple <- diff(log(pApple))*100
 pjnj <- rev(jnj[,7])
 rjnj <- diff(log(pjnj))*100
+
+par(mfrow=c(1,2), cex=.8)
+
+qqnorm(rApple, col="blue", main="")
+qqline(rApple, lwd=2, col="red")
+
+qqnorm(rjnj, col="blue", main="")
+qqline(rjnj, lwd=2, col="red")
 ```
+a). The log returns of Apple and JnJ do not follow a normal distribution.
+
+```{r}
+
+```
+b). 
