@@ -56,3 +56,7 @@ a). The log returns of Apple and JnJ do not follow a normal distribution.
 
 ```
 b). 
+
+c).
+
+d). 
