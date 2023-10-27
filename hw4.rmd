@@ -42,7 +42,7 @@ rApple <- diff(log(pApple))*100
 pjnj <- rev(jnj[,7])
 rjnj <- diff(log(pjnj))*100
 
-par(mfrow=c(1,2), cex=.8)
+par(mfrow=c(1,2), mar=c(4,4,4,1)+.1, cex=.8)
 
 qqnorm(rApple, col="blue", main="")
 qqline(rApple, lwd=2, col="red")
@@ -50,13 +50,38 @@ qqline(rApple, lwd=2, col="red")
 qqnorm(rjnj, col="blue", main="")
 qqline(rjnj, lwd=2, col="red")
 ```
-a). The log returns of Apple and JnJ do not follow a normal distribution.
+a). The log returns of Apple and JnJ do not follow a normal distribution because the tails are heavier.
 
 ```{r}
+par(mfrow=c(1,2), mar=c(4,4,4,1)+.1, cex=.8)
+x <- (1:length(rApple)-.5)/length(rApple)
+qt4 <- qt(x, 4)
+res <- qqplot(qt4, rApple, col="blue", main="")
+x <- res$x
+y <- res$y
+abline(lsfit(x, y), col="red", lwd=2)
+title("rApple against t(4)")
 
+x <- (1:length(rjnj)-.5)/length(rjnj)
+qt4 <- qt(x, 4)
+res <- qqplot(qt4, rjnj, col="blue", main="")
+x <- res$x
+y <- res$y
+abline(lsfit(x, y), col="red", lwd=2)
+title("rJnJ against t(4)")
 ```
-b). 
+b). A t-distribution with 4 degrees of freedom seems to be a better fit because it reduces the heavy-tailedness of the log returns.
 
-c).
+```{r}
+rjnjb <- rjnj[2063:1812]
+rjnja <- rjnj[1306:1]
+
+res <- qqplot(rjnjb, rjnja, col="blue", main="")
+x <- res$x
+y <- res$y
+abline(lsfit(x, y), col="red", lwd=2)
+title("rJnJ before and after financial crisis")
+```
+c). 
 
 d). 
