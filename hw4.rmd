@@ -79,9 +79,24 @@ rjnja <- rjnj[1306:1]
 res <- qqplot(rjnjb, rjnja, col="blue", main="")
 x <- res$x
 y <- res$y
-abline(lsfit(x, y), col="red", lwd=2)
+qqline(rApple, col="red", main="")
 title("rJnJ before and after financial crisis")
 ```
 c). 
 
-d). 
+```{r}
+rApplea <- rApple[1306:1]
+
+par(mfrow=c(1,2), mar=c(4,4,4,1)+.1, cex=.8)
+x <- (1:length(rApplea)-.5)/length(rApplea)
+qt4 <- qt(x, 4)
+res <- qqplot(qt4, rApplea, col="blue", main="")
+x <- res$x
+y <- res$y
+abline(lsfit(x, y), col="red", lwd=2)
+title("rApple against t(1304)")
+
+hist(rApplea, main="rApple After Financial Crisis", xlab="log return", ylab="Density", freq=FALSE)
+curve(dt(x, df=4), add=TRUE, col='red' )
+```
+d). 1304 degrees of freedom.
