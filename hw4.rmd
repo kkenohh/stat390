@@ -1,7 +1,7 @@
 ---
-title: 'STAT390: Homework 2'
+title: 'STAT390: Homework 4'
 author: "Ken"
-date: "2023-10-11"
+date: "2023-10-27"
 output:
   pdf_document: default
   html_document: default
@@ -12,6 +12,20 @@ knitr::opts_chunk$set(echo = TRUE)
 apple <- read.csv("APPL.csv")
 jnj <- read.csv("JNJ.csv")
 ```
+
+![Homework 4 Page 1](img/homework4-1.jpg)
+
+![Homework 4 Page 2](img/homework4-2.jpg)
+
+![Homework 4 Page 3](img/homework4-3.jpg)
+
+![Homework 4 Page 4](img/homework4-4.jpg)
+
+![Homework 4 Page 5](img/homework4-5.jpg)
+
+![Homework 4 Page 6](img/homework4-6.jpg)
+
+![Homework 4 Page 7](img/homework4-7.jpg)
 
 # Question 1
 a). Geometric Distribution. It has one parameter, *p*, which is the probability of winning at least one of the lotteries. The value we pass in as *p* would be P("win one") = 1 - P("win neither") = (1 - (1 - *p1*)(1 - *p2*))
@@ -32,7 +46,10 @@ top3 * 10 + 50
 
 c).
 ```{r}
-
+mean <- qnorm((.9 - .05) / 2)
+sd <- (qnorm(.9) - qnorm(.05)) / (2 * qnorm(0.5))
+mean
+sd
 ```
 
 # Question 6
@@ -46,9 +63,11 @@ par(mfrow=c(1,2), mar=c(4,4,4,1)+.1, cex=.8)
 
 qqnorm(rApple, col="blue", main="")
 qqline(rApple, lwd=2, col="red")
+title("rApple: heavier")
 
 qqnorm(rjnj, col="blue", main="")
 qqline(rjnj, lwd=2, col="red")
+title("rJnJ: heavier")
 ```
 a). The log returns of Apple and JnJ do not follow a normal distribution because the tails are heavier.
 
@@ -76,27 +95,44 @@ b). A t-distribution with 4 degrees of freedom seems to be a better fit because 
 rjnjb <- rjnj[2063:1812]
 rjnja <- rjnj[1306:1]
 
-res <- qqplot(rjnjb, rjnja, col="blue", main="")
-x <- res$x
-y <- res$y
-qqline(rApple, col="red", main="")
-title("rJnJ before and after financial crisis")
+boxplot(rjnjb, rjnja, 
+        names = c("Before Crisis", "After Crisis"),
+        ylab = "Log Returns")
+title("Log Returns Before and After Financial Crisis")
+
+par(mfrow = c(1, 2))  # Create a 1x2 grid for plots
+
+hist(rjnjb, breaks = 15, main = "Before Crisis",
+     xlab = "Log Returns", freq=FALSE)
+
+hist(rjnja, breaks = 15, main = "After Crisis",
+     xlab = "Log Returns", freq=FALSE)
+
+par(mfrow=c(1,2), mar=c(4,4,4,1)+.1, cex=.8)
+res <- qqplot(qlogis(ppoints(length(rjnjb))), rjnjb, col="blue", main="", xlab="Theoretical Quantiles")
+abline(0, 1, col="red", main="")
+title("rJnJ Before Financial Crisis")
+
+res <- qqplot(qlogis(ppoints(length(rjnja))), rjnja, col="blue", main="", xlab="Theoretical Quantiles")
+abline(0, 1, col="red", main="")
+title("rJnJ After Financial Crisis")
 ```
-c). 
+c). Although there are more outliers after the financial crisis, it seems that the log returns after the financial crisis follows a normal distribution a lot better, as the tails aren't as light as before the financial crisis.
 
 ```{r}
 rApplea <- rApple[1306:1]
 
 par(mfrow=c(1,2), mar=c(4,4,4,1)+.1, cex=.8)
 x <- (1:length(rApplea)-.5)/length(rApplea)
-qt4 <- qt(x, 4)
+qt4 <- qt(x, 12)
 res <- qqplot(qt4, rApplea, col="blue", main="")
 x <- res$x
 y <- res$y
 abline(lsfit(x, y), col="red", lwd=2)
-title("rApple against t(1304)")
+title("rApple Against t(12)")
 
+x <- (1:length(rApplea)-.5)/length(rApplea)
 hist(rApplea, main="rApple After Financial Crisis", xlab="log return", ylab="Density", freq=FALSE)
-curve(dt(x, df=4), add=TRUE, col='red' )
+curve(dt(x, df=12), add=TRUE, col='red' )
 ```
-d). 1304 degrees of freedom.
+d). I believe 12 degrees of freedom is the best fit because it follows the QQ-Plot and histogram well.

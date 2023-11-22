@@ -1,0 +1,20 @@
+---
+title: 'STAT390: Homework 8'
+author: "Ken"
+date: "2023-11-21"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+sample_data <- read.delim("sample.txt", header = F)
+olympic_data <- read.delim("olympic1500m.txt", sep = "")
+```
+
+# Question 1
+```{r}
+se <- sd(sample_data) / sqrt(length(sample_data[1]))
+```
