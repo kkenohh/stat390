@@ -10,11 +10,13 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-sample_data <- read.delim("sample.txt", header = F)
+sample_data <- read.delim("sample.txt", header = F)[,1]
 olympic_data <- read.delim("olympic1500m.txt", sep = "")
 ```
 
 # Question 1
 ```{r}
-se <- sd(sample_data) / sqrt(length(sample_data[1]))
+mean <- mean(sample_data)
+se <- sqrt((3 - (3*(mean))^2) / length(sample_data))
+se
 ```
