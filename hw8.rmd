@@ -20,6 +20,16 @@ mean <- mean(sample_data)
 se <- sqrt((3 - (3*(mean))^2) / length(sample_data))
 se
 ```
+![Homework 8 Page 1](img/hw8-1.jpg)
+![Homework 8 Page 2](img/hw8-2.jpg)
+
+![Homework 8 Page 3](img/hw8-3.jpg)
+
+![Homework 8 Page 4](img/hw8-4.jpg)
+
+![Homework 8 Page 5](img/hw8-5.jpg)
+
+![Homework 8 Page 6](img/hw8-6.jpg)
 
 # Question 4
 ```{r}
@@ -36,3 +46,4 @@ a) A one-sided CI would be better because we are trying to find if the outer lan
 
 b) It is not approximately normally distributed because the histogram is not in a symmetric bell-shaped curve.
 
+![Homework 8 Page 7](img/hw8-7.jpg)
